@@ -8,4 +8,17 @@
     <color name="secondary_text">#212121</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
+
+
+    <color name="material_blue_500">#5677fc</color>
+    <color name="waveform_selected">#00BFA5</color>
+    <color name="waveform_unselected">#535353</color>
+    <color name="waveform_unselected_bkgnd_overlay">#ffd6d7d7</color>
+    <color name="selection_border">#ffffff</color>
+    <color name="playback_indicator">#ffff66</color>
+    <color name="grid_line">#6D6D6D</color>
+    <color name="timecode">#000000</color>
+    <color name="timecode_shadow">#aa000000</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="white">#ffffff</color>
 </resources>
