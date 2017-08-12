@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "99987947458",
+    "firebase_url": "https://androidbashfirebaseupdat-b96a7.firebaseio.com",
+    "project_id": "androidbashfirebaseupdat-b96a7",
+    "storage_bucket": "androidbashfirebaseupdat-b96a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99987947458:android:e388dc053406b6bc",
+        "android_client_info": {
+          "package_name": "com.androidbash.androidbashfirebaseupdated"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "99987947458-dqb15hs1n9is8adn25mc3o37pfoth0et.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.androidbash.androidbashfirebaseupdated",
+            "certificate_hash": "699d81e66b220f05ad8c9526e2c7cbc1b3132da7"
+          }
+        },
+        {
+          "client_id": "99987947458-1krpleeldv2jmf7e698uvukrfd66i2hl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPByB2gygZhLbknRR7sn9Dm17dsMw1y0M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99987947458-1krpleeldv2jmf7e698uvukrfd66i2hl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
