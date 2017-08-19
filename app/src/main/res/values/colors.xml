@@ -21,4 +21,6 @@
     <color name="timecode_shadow">#aa000000</color>
     <color name="color_white">#FFFFFF</color>
     <color name="white">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorDivider">#eae6e6</color>
 </resources>

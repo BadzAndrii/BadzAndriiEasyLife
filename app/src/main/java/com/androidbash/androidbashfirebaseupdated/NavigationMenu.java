@@ -1,6 +1,7 @@
 package com.androidbash.androidbashfirebaseupdated;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,13 +14,16 @@ import android.view.MenuItem;
 
 import com.androidbash.androidbashfirebaseupdated.fragments.ContactUsFragment;
 import com.androidbash.androidbashfirebaseupdated.fragments.FragmentIndex;
+import com.androidbash.androidbashfirebaseupdated.fragments.ProfileFragment;
 import com.androidbash.androidbashfirebaseupdated.fragments.SettingsFragment;
 import com.androidbash.androidbashfirebaseupdated.tabs.dataFragment;
+import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class NavigationMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +31,6 @@ public class NavigationMenu extends AppCompatActivity
         setContentView(R.layout.activity_navigation_menu);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new FragmentIndex()).commit();
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,6 +45,8 @@ public class NavigationMenu extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+
     }
 
     @Override
@@ -95,9 +100,20 @@ public class NavigationMenu extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
         } else if (id == R.id.nav_share) {
-
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_send) {
-
+//            Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
+//            startActivity(intent2);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
+        }
+        else if (id == R.id.nav_send2) {
+            Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent2);
+        }
+        else if (id == R.id.nav_send3) {
+            Intent intent3 = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent3);
         }
         ftrans.commit();
 
