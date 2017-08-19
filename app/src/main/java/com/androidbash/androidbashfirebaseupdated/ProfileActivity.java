@@ -45,6 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     SharedPreferences sPref;
+    SharedPreferences User_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

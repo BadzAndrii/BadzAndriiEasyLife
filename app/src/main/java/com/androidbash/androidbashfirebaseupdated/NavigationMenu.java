@@ -112,7 +112,7 @@ public class NavigationMenu extends AppCompatActivity
             startActivity(intent2);
         }
         else if (id == R.id.nav_send3) {
-            Intent intent3 = new Intent(getApplicationContext(), ProfileActivity.class);
+            Intent intent3 = new Intent(getApplicationContext(), CompanyActivity.class);
             startActivity(intent3);
         }
         ftrans.commit();
