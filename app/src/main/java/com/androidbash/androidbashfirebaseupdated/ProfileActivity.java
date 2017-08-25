@@ -45,7 +45,6 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     SharedPreferences sPref;
-    SharedPreferences User_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
         myFirebaseRef = new Firebase("https://androidbashfirebaseupdat-b96a7.firebaseio.com/users/");
         mAuth = FirebaseAuth.getInstance();
 
-//        Badz codding
+//        codding
         sPref = getSharedPreferences("user_id",MODE_PRIVATE);
         final String uid = sPref.getString("user_id","");
         myFirebaseRef.child(uid).addValueEventListener(new ValueEventListener() {

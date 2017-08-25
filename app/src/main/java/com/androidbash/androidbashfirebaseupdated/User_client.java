@@ -1,30 +1,25 @@
 package com.androidbash.androidbashfirebaseupdated;
 
-/**
- * Created by AndroidBash on 10/07/16
- */
-public class User {
+
+public class User_client {
 
     private String id;
     private String name;
     private String phoneNumber;
     private String email;
     private String password;
-    private String company_name;
-    private String company_description;
+    private Boolean isAdmin;
 
-
-    public User() {
+    public User_client() {
     }
 
-    public User(String id, String name, String phoneNumber, String email, String password, String company_name, String company_description) {
+    public User_client(String id, String name, String phoneNumber, String email, String password, Boolean isAdmin) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
-        this.company_name = company_name;
-        this.company_description = company_description;
+        this.isAdmin = isAdmin;
     }
 
     public String getId() {
@@ -69,18 +64,13 @@ public class User {
         this.password = password;
     }
 
-    public String getCompany_name() {
-        return company_name;
-    }
-    public void setCompany_name(String company_name) {
-        this.company_name = company_name;
+    public Boolean getIsAdmin() {
+        return isAdmin;
     }
 
-    public String getCompany_description() {
-        return company_description;
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
-    public void setCompany_description(String company_description) {
-        this.company_description = company_description;
-    }
+
 
 }

@@ -9,10 +9,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by Belal on 2/26/2017.
- */
-
 public class ServiceList extends ArrayAdapter<Service> {
     private Activity context;
     List<Service> services;
@@ -31,10 +27,12 @@ public class ServiceList extends ArrayAdapter<Service> {
 
         TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
         TextView textViewGenre = (TextView) listViewItem.findViewById(R.id.textViewGenre);
+        TextView textViewTime = (TextView) listViewItem.findViewById(R.id.textViewTime);
 
         Service service = services.get(position);
         textViewName.setText(service.getServiceName());
-        textViewGenre.setText(service.getServiceId());
+        textViewGenre.setText(service.getServiceDescription());
+        textViewTime.setText("Час: "+service.getServiceTime()+" хв");
 
         return listViewItem;
     }

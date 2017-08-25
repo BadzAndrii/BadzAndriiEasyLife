@@ -37,7 +37,15 @@
             <item
                 android:id="@+id/nav_send3"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Компанії(актівіті)" />
+                android:title="Мої компанії(актівіті)" />
+            <item
+                android:id="@+id/nav_send4"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Список компаній" />
+            <item
+                android:id="@+id/nav_send5"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Список послуг" />
         </menu>
     </item>
 

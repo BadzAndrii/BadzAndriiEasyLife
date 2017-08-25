@@ -4,16 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -21,10 +27,15 @@ import java.util.List;
 
 public class ServiceActivity extends AppCompatActivity {
 
+//    by
+    private Firebase myFirebaseRef;
+//    private TextView welcomeText;
+//
 
-    Button buttonAddTrack;
-    EditText editTextTrackName;
-    EditText editTextTrackDescription;
+    Button buttonAddService;
+    EditText editTextServiceName;
+    EditText editTextServiceDescription;
+    EditText editTextServiceTime;
     ListView listViewServices;
 
     DatabaseReference databaseService;
@@ -36,29 +47,31 @@ public class ServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
 
-        Intent intent = getIntent();
 
-        /*
-        * this line is important
-        * this time we are not getting the reference of a direct node
-        * but inside the node track we are creating a new child with the artist id
-        * and inside that node we will store all the tracks with unique ids
-        * */
-        databaseService = FirebaseDatabase.getInstance().getReference("service").child(intent.getStringExtra(CompanyActivity.TRACK_ID));
+//        by
+        myFirebaseRef = new Firebase("https://androidbashfirebaseupdat-b96a7.firebaseio.com/company/");
+//
+//        Intent intent = getIntent();
 
-        buttonAddTrack = (Button) findViewById(R.id.buttonAddTrack);
-        editTextTrackName = (EditText) findViewById(R.id.editTextServiceName);
-        editTextTrackDescription = (EditText) findViewById(R.id.editTextServiceDescription);
+
+//        databaseService = FirebaseDatabase.getInstance().getReference("company").child(intent.getStringExtra(CompanyActivity.TRACK_ID));
+        databaseService = FirebaseDatabase.getInstance().getReference("service");
+
+        buttonAddService = (Button) findViewById(R.id.buttonAddService);
+        editTextServiceName = (EditText) findViewById(R.id.editTextServiceName);
+        editTextServiceDescription = (EditText) findViewById(R.id.editTextServiceDescription);
+        editTextServiceTime = (EditText) findViewById(R.id.editTextServiceTime);
         listViewServices = (ListView) findViewById(R.id.listViewServices);
 
         services = new ArrayList<>();
 
-        buttonAddTrack.setOnClickListener(new View.OnClickListener() {
+        buttonAddService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveTrack();
+                saveService();
             }
         });
+
 
     }
 
@@ -83,23 +96,39 @@ public class ServiceActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
-    private void saveTrack() {
-        String serviceName = editTextTrackName.getText().toString().trim();
-        String serviceDescription = editTextTrackDescription.getText().toString().trim();
+    private void saveService() {
+//        by
+        Intent intent = getIntent();
+//
 
-        if (!TextUtils.isEmpty(serviceName)) {
+        String serviceName = editTextServiceName.getText().toString().trim();
+        String serviceDescription = editTextServiceDescription.getText().toString().trim();
+        String serviceTime = editTextServiceTime.getText().toString().trim();
+
+        if (!TextUtils.isEmpty(serviceName)&&!TextUtils.isEmpty(serviceDescription)&&!TextUtils.isEmpty(serviceTime)) {
             String id  = databaseService.push().getKey();
 
-            Service service = new Service(serviceName,serviceDescription);
+            Service service = new Service(id,serviceName,serviceDescription,serviceTime);
             databaseService.child(id).setValue(service);
-            Toast.makeText(this, "Track saved", Toast.LENGTH_LONG).show();
-            editTextTrackName.setText("");
-            editTextTrackDescription.setText("");
+
+//            by
+
+            myFirebaseRef.child(intent.getStringExtra(CompanyActivity.TRACK_ID)).child("servicesId").child(id).setValue(id);
+
+//
+            Toast.makeText(this, "Послуга додана", Toast.LENGTH_LONG).show();
+            editTextServiceName.setText("");
+            editTextServiceDescription.setText("");
+            editTextServiceTime.setText("");
         }
             else {
-            Toast.makeText(this, "Please enter track name", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Будь ласка, заповніть усі дані про послугу", Toast.LENGTH_LONG).show();
         }
     }
+
+
 }

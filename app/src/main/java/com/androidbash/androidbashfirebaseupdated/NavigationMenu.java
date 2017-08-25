@@ -1,7 +1,9 @@
 package com.androidbash.androidbashfirebaseupdated;
 
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,7 +26,7 @@ public class NavigationMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
 
-
+    SharedPreferences isUserAdmin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,9 @@ public class NavigationMenu extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+        isUserAdmin = getSharedPreferences("isAdmin", Context.MODE_PRIVATE);
+        isUserAdmin.getBoolean("isAdmin",false);
 
 
     }
@@ -111,9 +116,17 @@ public class NavigationMenu extends AppCompatActivity
             Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent2);
         }
-        else if (id == R.id.nav_send3) {
+            else if(id == R.id.nav_send3) {
             Intent intent3 = new Intent(getApplicationContext(), CompanyActivity.class);
             startActivity(intent3);
+        }
+        else if (id == R.id.nav_send4) {
+            Intent intent4 = new Intent(getApplicationContext(), ListCompanyForUsers.class);
+            startActivity(intent4);
+        }
+        else if (id == R.id.nav_send5) {
+            Intent intent5 = new Intent(getApplicationContext(), ListServiceForUsers.class);
+            startActivity(intent5);
         }
         ftrans.commit();
 

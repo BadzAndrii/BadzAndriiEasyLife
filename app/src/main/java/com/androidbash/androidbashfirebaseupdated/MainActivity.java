@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myFirebaseRef.child("welcomeText").setValue("Android App @ Badzzzzzzzzzzzzzzzzzz");
+                myFirebaseRef.child(uid).child("service").child("welcomeText").setValue("Android App @ Badzzzzzzzzzzzzzzzzzz");
             }
         });
 
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         revertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myFirebaseRef.child("welcomeText").setValue("zzzzzzzzzzЛаскаво просимо до нашого додатку, ми створені щоб зробити твоє життя краще!");
+                myFirebaseRef.child(uid).child("service").child("welcomeText").setValue("zzzzzzzzzzЛаскаво просимо до нашого додатку, ми створені щоб зробити твоє життя краще!");
             }
         });
     }

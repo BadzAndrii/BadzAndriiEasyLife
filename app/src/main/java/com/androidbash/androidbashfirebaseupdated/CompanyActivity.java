@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -45,10 +46,11 @@ public class CompanyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_companies);
 
         sPref = getSharedPreferences("user_id",MODE_PRIVATE);
-        final String uid = sPref.getString("user_id","");
+//        final String uid = sPref.getString("user_id","");
 
 
-        databaseCompany = FirebaseDatabase.getInstance().getReference("company").child(uid);
+        databaseCompany = FirebaseDatabase.getInstance().getReference("company");
+//        databaseCompany = FirebaseDatabase.getInstance().getReference("company").child(uid);
 
         buttonAddCompany = (Button) findViewById(R.id.buttonAddCompany);
         editTextCompanyName = (EditText) findViewById(R.id.editTextName);
@@ -78,7 +80,7 @@ public class CompanyActivity extends AppCompatActivity {
                 intent.putExtra(TRACK_ID, company.getCompanyId());
 
 //                Log.v("E_VALUE1","Company_name:"+company.getCompanyName());
-//                Log.v("E_VALUE1","Company_id:"+company.getCompanyId());
+                Log.v("E_VALUE1","CompanyId:"+company.getCompanyId());
                //starting the activity with intent
                 startActivity(intent);
             }
@@ -111,11 +113,12 @@ public class CompanyActivity extends AppCompatActivity {
     private void saveCompany() {
         String companyName = editTextCompanyName.getText().toString().trim();
         String companyDescription = editTextCompanyDescription.getText().toString().trim();
+        final String uid = sPref.getString("user_id","");
 
         if (!TextUtils.isEmpty(companyName)) {
             String id  = databaseCompany.push().getKey();
 
-            Company company = new Company(id, companyName,companyDescription);
+            Company company = new Company(id, companyName,companyDescription, uid);
 
             databaseCompany.child(id).setValue(company);
 

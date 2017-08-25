@@ -26,7 +26,15 @@
         android:layout_below="@+id/editTextServiceName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
+    <EditText
+        android:id="@+id/editTextServiceTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введіть час послуги на одного клієнта(у хв)"
+        android:inputType="number"
+        android:layout_below="@+id/editTextServiceDescription"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
     <LinearLayout
         android:orientation="horizontal"
         android:id="@+id/linearLayout"
@@ -39,11 +47,11 @@
 
 
     <Button
-        android:id="@+id/buttonAddTrack"
+        android:id="@+id/buttonAddService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Добавити"
-        android:layout_below="@+id/editTextServiceDescription"
+        android:layout_below="@+id/editTextServiceTime"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -56,10 +64,10 @@
         android:text="Зареєстровані послуги"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:layout_below="@+id/buttonAddTrack"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/buttonAddService"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_alignParentStart="true" />
 
 
 
