@@ -8,12 +8,16 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +48,10 @@ public class CompanyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_companies);
+
+
+
+
 
         sPref = getSharedPreferences("user_id",MODE_PRIVATE);
 //        final String uid = sPref.getString("user_id","");
@@ -80,11 +88,13 @@ public class CompanyActivity extends AppCompatActivity {
                 intent.putExtra(TRACK_ID, company.getCompanyId());
 
 //                Log.v("E_VALUE1","Company_name:"+company.getCompanyName());
-                Log.v("E_VALUE1","CompanyId:"+company.getCompanyId());
+                Log.v("E_VALUE1","companyId:"+company.getCompanyId());
                //starting the activity with intent
-                startActivity(intent);
+               startActivity(intent);
             }
         });
+
+
     }
 
     @Override

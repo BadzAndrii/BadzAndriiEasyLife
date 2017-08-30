@@ -1,8 +1,12 @@
 package com.androidbash.androidbashfirebaseupdated;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -19,11 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListCompanyForUsers extends AppCompatActivity {
+    public static final String TRACK_ID = "companyId";
 
     DatabaseReference databaseCompany;
     List<Company> companies;
 
     private ListView listViewCompany;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,25 @@ public class ListCompanyForUsers extends AppCompatActivity {
         listViewCompany = (ListView) findViewById(R.id.listViewCompany);
 
         companies = new ArrayList<>();
+
+        //attaching listener to listview
+        listViewCompany.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //getting the selected artist
+                Company company = companies.get(i);
+
+                //creating an intent
+                Intent intent = new Intent(getApplicationContext(), ListServiceForUsers.class);
+                intent.putExtra(TRACK_ID, company.getCompanyId());
+
+//                Log.v("E_VALUE1","Company_name:"+company.getCompanyName());
+                Log.v("E_VALUE1","CompanyId:"+company.getCompanyId());
+                //starting the activity with intent
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override

@@ -19,5 +19,4 @@
         android:layout_below="@+id/textView">
 
     </ListView>
-
 </LinearLayout>

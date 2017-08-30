@@ -21,13 +21,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class ClientOrder extends AppCompatActivity {
 
+    private ArrayList<Service> services = new ArrayList<>();
 
-    public static final String TRACK_ID = "companyId";
+//    public static final String TRACK_ID = "companyId";
 
     Button buttonAddOrder;
     EditText editTextOrderTime;
@@ -65,10 +67,12 @@ public class ClientOrder extends AppCompatActivity {
         Intent intent = getIntent();
         final String uid = sPref.getString("user_id","");
 
+        String company_id = getIntent().getStringExtra(ListServiceForUsers.TRACK_ID);
+
         if (!TextUtils.isEmpty(orderTime)) {
             String id  = databaseCompany.push().getKey();
 
-            Order order = new Order(id, intent.getStringExtra(ListServiceForUsers.SERVICE_ID), intent.getStringExtra(ListServiceForUsers.SERVICE_ID), orderTime, uid);
+            Order order = new Order(id, company_id, intent.getStringExtra(ListServiceForUsers.SERVICE_ID),  orderTime, uid);
 
             databaseCompany.child(id).setValue(order);
 
@@ -78,5 +82,12 @@ public class ClientOrder extends AppCompatActivity {
         else {
             Toast.makeText(this, "Please enter order start time", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Toast.makeText(this, "FINISHED", Toast.LENGTH_LONG).show();
+         finish();
     }
 }
