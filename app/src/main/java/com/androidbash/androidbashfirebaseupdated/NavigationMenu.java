@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -27,13 +28,27 @@ public class NavigationMenu extends AppCompatActivity
     private FirebaseAuth mAuth;
 
     SharedPreferences isUserAdmin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.v("Activity:","Start NavigationMenu");
         setContentView(R.layout.activity_navigation_menu);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new FragmentIndex()).commit();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.container, new FragmentIndex()).commit();
 
+
+        initView();
+
+        mAuth = FirebaseAuth.getInstance();
+
+        isUserAdmin = getSharedPreferences("isAdmin", Context.MODE_PRIVATE);
+        isUserAdmin.getBoolean("isAdmin", false);
+
+
+    }
+
+    private void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,12 +60,6 @@ public class NavigationMenu extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        mAuth = FirebaseAuth.getInstance();
-
-        isUserAdmin = getSharedPreferences("isAdmin", Context.MODE_PRIVATE);
-        isUserAdmin.getBoolean("isAdmin",false);
-
 
     }
 
@@ -73,18 +82,16 @@ public class NavigationMenu extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            mAuth.signOut();
+            FirebaseAuth.getInstance().signOut();
+
+//            mAuth.signOut();
             finish();
         }
+        finish();
         return super.onOptionsItemSelected(item);
     }
 
@@ -105,28 +112,24 @@ public class NavigationMenu extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
         } else if (id == R.id.nav_share) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(intent);
         } else if (id == R.id.nav_send) {
 //            Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
 //            startActivity(intent2);
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
-        }
-        else if (id == R.id.nav_send2) {
+        } else if (id == R.id.nav_send2) {
             Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent2);
-        }
-            else if(id == R.id.nav_send3) {
+        } else if (id == R.id.nav_send3) {
             Intent intent3 = new Intent(getApplicationContext(), CompanyActivity.class);
             startActivity(intent3);
-        }
-        else if (id == R.id.nav_send4) {
+        } else if (id == R.id.nav_send4) {
             Intent intent4 = new Intent(getApplicationContext(), ListCompanyForUsers.class);
             startActivity(intent4);
-        }
-        else if (id == R.id.nav_send5) {
-            Intent intent5 = new Intent(getApplicationContext(), ListServiceForUsers.class);
-            startActivity(intent5);
+        } else if (id == R.id.nav_send5) {
+//            Intent intent5 = new Intent(getApplicationContext(), UserInfoActivity.class);
+//            startActivity(intent5);
         }
         ftrans.commit();
 

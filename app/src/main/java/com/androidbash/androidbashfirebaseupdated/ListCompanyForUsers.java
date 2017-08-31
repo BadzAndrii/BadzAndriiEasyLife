@@ -22,66 +22,68 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+// Список компанії для показу користувачам
 public class ListCompanyForUsers extends AppCompatActivity {
     public static final String TRACK_ID = "companyId";
 
     DatabaseReference databaseCompany;
-    List<Company> companies;
+    List<Company> companies = new ArrayList<>();
 
     private ListView listViewCompany;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.v("Activity:","Start ListCompanyForUsers");
         setContentView(R.layout.activity_list_company_for_users);
         databaseCompany = FirebaseDatabase.getInstance().getReference("company");
 
+        initView();
+        initListeners();
+
+    }
+
+    private void initView() {
         listViewCompany = (ListView) findViewById(R.id.listViewCompany);
+    }
 
-        companies = new ArrayList<>();
-
+    private void initListeners() {
         //attaching listener to listview
         listViewCompany.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //getting the selected artist
                 Company company = companies.get(i);
-
-                //creating an intent
                 Intent intent = new Intent(getApplicationContext(), ListServiceForUsers.class);
                 intent.putExtra(TRACK_ID, company.getCompanyId());
 
-//                Log.v("E_VALUE1","Company_name:"+company.getCompanyName());
-                Log.v("E_VALUE1","CompanyId:"+company.getCompanyId());
-                //starting the activity with intent
+                Log.v("E_VALUE1", "CompanyId:" + company.getCompanyId());
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        databaseCompany.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                companies.clear();
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Company company = postSnapshot.getValue(Company.class);
-                    companies.add(company);
-                }
-                CompanyList companyListAdapter = new CompanyList(ListCompanyForUsers.this, companies);
-                listViewCompany.setAdapter(companyListAdapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        databaseCompany.addValueEventListener(valueEventListener);
     }
+
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            companies.clear();
+            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                Company company = postSnapshot.getValue(Company.class);
+                companies.add(company);
+            }
+            CompanyList companyListAdapter = new CompanyList(ListCompanyForUsers.this, companies);
+            listViewCompany.setAdapter(companyListAdapter);
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
 
 }

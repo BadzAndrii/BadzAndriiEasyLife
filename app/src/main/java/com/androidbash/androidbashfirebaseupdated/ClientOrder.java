@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidbash.androidbashfirebaseupdated.utils.MyTextUtil;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -24,12 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+//Формування запису (створення запису на послугу в БД)
 public class ClientOrder extends AppCompatActivity {
-
-    private ArrayList<Service> services = new ArrayList<>();
-
-//    public static final String TRACK_ID = "companyId";
 
     Button buttonAddOrder;
     EditText editTextOrderTime;
@@ -37,57 +34,59 @@ public class ClientOrder extends AppCompatActivity {
     DatabaseReference databaseCompany;
 
     SharedPreferences sPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.v("Activity:","Start ClientOrder");
         setContentView(R.layout.activity_client_order);
 
-        Intent intent = getIntent();
-
-        sPref = getSharedPreferences("user_id",MODE_PRIVATE);
-//        final String uid = sPref.getString("user_id","");
+        sPref = getSharedPreferences("user_id", MODE_PRIVATE);
         databaseCompany = FirebaseDatabase.getInstance().getReference("orders");
-//        databaseCompany = FirebaseDatabase.getInstance().getReference("company").child(uid);
 
+        initView();
+        initListeners();
+    }
+
+    private void initView() {
         buttonAddOrder = (Button) findViewById(R.id.buttonAddOrder);
         editTextOrderTime = (EditText) findViewById(R.id.editTextTime);
+    }
 
+    private void initListeners() {
         buttonAddOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveOrder();
             }
         });
-
-
     }
 
     private void saveOrder() {
-        String orderTime = editTextOrderTime.getText().toString().trim();
+        String orderTime = MyTextUtil.getText(editTextOrderTime);
+//        String orderTime = editTextOrderTime.getText().toString().trim();
         Intent intent = getIntent();
-        final String uid = sPref.getString("user_id","");
+        final String uid = sPref.getString("user_id", "");
 
         String company_id = getIntent().getStringExtra(ListServiceForUsers.TRACK_ID);
 
         if (!TextUtils.isEmpty(orderTime)) {
-            String id  = databaseCompany.push().getKey();
+            String id = databaseCompany.push().getKey();
 
-            Order order = new Order(id, company_id, intent.getStringExtra(ListServiceForUsers.SERVICE_ID),  orderTime, uid);
+            Order order = new Order(id, company_id, intent.getStringExtra(ListServiceForUsers.SERVICE_ID), orderTime, uid);
 
             databaseCompany.child(id).setValue(order);
 
             Toast.makeText(this, "Order saved", Toast.LENGTH_LONG).show();
             editTextOrderTime.setText("");
-        }
-        else {
+        } else {
             Toast.makeText(this, "Please enter order start time", Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
     public void onBackPressed() {
-
         Toast.makeText(this, "FINISHED", Toast.LENGTH_LONG).show();
-         finish();
+        finish();
     }
 }

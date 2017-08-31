@@ -33,8 +33,6 @@ public class CompanyList extends ArrayAdapter<Company> {
         textViewGenre.setText(company.getCompanyDescription());
 
 
-
-
         return listViewItem;
     }
 }

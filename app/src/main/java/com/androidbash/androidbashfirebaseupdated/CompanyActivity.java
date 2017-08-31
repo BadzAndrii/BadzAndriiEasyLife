@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidbash.androidbashfirebaseupdated.utils.MyTextUtil;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -39,36 +40,40 @@ public class CompanyActivity extends AppCompatActivity {
 
     DatabaseReference databaseCompany;
 
-    List<Company> companies;
+    List<Company> companies = new ArrayList<>();
 
     SharedPreferences sPref;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.v("Activity:","Start CompanyActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_companies);
 
-
-
-
-
-        sPref = getSharedPreferences("user_id",MODE_PRIVATE);
+        sPref = getSharedPreferences("user_id", MODE_PRIVATE);
 //        final String uid = sPref.getString("user_id","");
 
 
         databaseCompany = FirebaseDatabase.getInstance().getReference("company");
 //        databaseCompany = FirebaseDatabase.getInstance().getReference("company").child(uid);
 
+        initView();
+        initListeners();
+//        companies = new ArrayList<>();
+
+
+    }
+
+    private void initView() {
         buttonAddCompany = (Button) findViewById(R.id.buttonAddCompany);
         editTextCompanyName = (EditText) findViewById(R.id.editTextName);
         editTextCompanyDescription = (EditText) findViewById(R.id.editTextDescription);
-
         textViewArtist = (TextView) findViewById(R.id.textViewArtist);
         listViewCompany = (ListView) findViewById(R.id.listViewCompany);
+    }
 
-        companies = new ArrayList<>();
-
+    private void initListeners() {
         buttonAddCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,56 +93,64 @@ public class CompanyActivity extends AppCompatActivity {
                 intent.putExtra(TRACK_ID, company.getCompanyId());
 
 //                Log.v("E_VALUE1","Company_name:"+company.getCompanyName());
-                Log.v("E_VALUE1","companyId:"+company.getCompanyId());
-               //starting the activity with intent
-               startActivity(intent);
+                Log.v("E_VALUE1", "companyId:" + company.getCompanyId());
+                //starting the activity with intent
+                startActivity(intent);
             }
         });
-
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        databaseCompany.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                companies.clear();
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Company company = postSnapshot.getValue(Company.class);
-                    companies.add(company);
-                }
-                CompanyList companyListAdapter = new CompanyList(CompanyActivity.this, companies);
-                listViewCompany.setAdapter(companyListAdapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        databaseCompany.addValueEventListener(valueEventListener);
     }
 
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            companies.clear();
+            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                Company company = postSnapshot.getValue(Company.class);
+                companies.add(company);
+            }
+            CompanyList companyListAdapter = new CompanyList(CompanyActivity.this, companies);
+            listViewCompany.setAdapter(companyListAdapter);
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
+
     private void saveCompany() {
-        String companyName = editTextCompanyName.getText().toString().trim();
-        String companyDescription = editTextCompanyDescription.getText().toString().trim();
-        final String uid = sPref.getString("user_id","");
+        //test
+        String companyName = MyTextUtil.getText(editTextCompanyName);
+//        String companyName = editTextCompanyName.getText().toString().trim();
+
+        String companyDescription = MyTextUtil.getText(editTextCompanyDescription);
+//        String companyDescription = editTextCompanyDescription.getText().toString().trim();
+        final String uid = sPref.getString("user_id", "");
 
         if (!TextUtils.isEmpty(companyName)) {
-            String id  = databaseCompany.push().getKey();
+            String id = databaseCompany.push().getKey();
 
-            Company company = new Company(id, companyName,companyDescription, uid);
+            Company company = new Company(id, companyName, companyDescription, uid);
 
             databaseCompany.child(id).setValue(company);
 
             Toast.makeText(this, "Company saved", Toast.LENGTH_LONG).show();
             editTextCompanyName.setText("");
             editTextCompanyDescription.setText("");
-        }
-            else {
+        } else {
             Toast.makeText(this, "Please enter company name", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        databaseCompany.removeEventListener(valueEventListener);
+        super.onStop();
     }
 }

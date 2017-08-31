@@ -10,12 +10,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ClientOrder">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Вітаємо на сторінці запису на прийом" />
+
     <EditText
         android:id="@+id/editTextTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Введіть час початку"
-        android:layout_below="@+id/textViewArtist"
+        android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
