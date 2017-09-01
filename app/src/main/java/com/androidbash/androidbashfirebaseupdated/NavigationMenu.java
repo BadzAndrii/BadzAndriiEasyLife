@@ -91,7 +91,7 @@ public class NavigationMenu extends AppCompatActivity
 //            mAuth.signOut();
             finish();
         }
-        finish();
+        finishAffinity();
         return super.onOptionsItemSelected(item);
     }
 

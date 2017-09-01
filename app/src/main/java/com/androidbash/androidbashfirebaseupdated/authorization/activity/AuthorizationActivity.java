@@ -64,7 +64,7 @@ public class AuthorizationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.v("Activity:","Start AuthorizationActivity");
+        Log.v("Activity:", "Start AuthorizationActivity");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -72,9 +72,9 @@ public class AuthorizationActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         initView();
-        initFirebase();
+//        initFirebase();
+        //якщо користувач вже раніше залогігений відкрити наступне вікно
         initListener();
-        showSignIn();
         dlg1 = new Dialog1();
 
     }
@@ -115,10 +115,7 @@ public class AuthorizationActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), NavigationMenu.class);
 
             String uid = mAuth.getCurrentUser().getUid();
-//            String image=mAuth.getCurrentUser().getPhotoUrl().toString();
             intent.putExtra("user_id", uid);
-//            intent_user_info.putExtra("user_id", uid);
-
             sPref = getSharedPreferences("user_id", MODE_PRIVATE);
             SharedPreferences.Editor ed = sPref.edit();
             ed.putString("user_id", uid);
@@ -126,6 +123,7 @@ public class AuthorizationActivity extends AppCompatActivity {
 
             startActivity(intent);
             finish();
+
             Log.d(TAG, "onAuthStateChanged:signed_in:" + mUser.getUid());
         }
     }
@@ -138,6 +136,16 @@ public class AuthorizationActivity extends AppCompatActivity {
                 if (mUser != null) {
                     // User_admin is signed in.
                     Intent intent = new Intent(getApplicationContext(), NavigationMenu.class);
+
+//                    TEST
+                    String uid = mAuth.getCurrentUser().getUid();
+                    intent.putExtra("user_id", uid);
+                    sPref = getSharedPreferences("user_id", MODE_PRIVATE);
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString("user_id", uid);
+                    ed.commit();
+//                    END TEST
+
                     startActivity(intent);
                     finish();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + mUser.getUid());
@@ -156,6 +164,8 @@ public class AuthorizationActivity extends AppCompatActivity {
 //        email = (EditText) findViewById(R.id.edit_text_email_id);
 //        password = (EditText) findViewById(R.id.edit_text_password);
         mAuth.addAuthStateListener(mAuthListener);
+
+        showSignIn();
     }
 
     @Override
@@ -200,7 +210,7 @@ public class AuthorizationActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         } else {
 //                            Intent intent_user_info = new Intent(getApplicationContext(), MainActivity.class);
-                            Intent intent = new Intent(getApplicationContext(), NavigationMenu.class);
+                            Intent intent = new Intent(AuthorizationActivity.this, NavigationMenu.class);
                             String uid = mAuth.getCurrentUser().getUid();
                             intent.putExtra("user_id", uid);
 //                            intent_user_info.putExtra("user_id", uid);
@@ -246,7 +256,7 @@ public class AuthorizationActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(AuthorizationActivity.this, "Authentication SUCCESS.",
                                     Toast.LENGTH_SHORT).show();
-                          onAuthenticationSucess(task.getResult().getUser());
+                            onAuthenticationSucess(task.getResult().getUser());
                         }
 
 
@@ -266,9 +276,9 @@ public class AuthorizationActivity extends AppCompatActivity {
 //        fm.popBackStack();
 
         //ТУТ МАЄ БУТИ ПОВЕРНЕННЯ НА ЕКРАН ПОЕРЕДНІЙ ( ГОЛОВНИЙ) ПІСЛЯ НАТИСКАННЯ НА КНОПКУ РЕЄСТРАЦІЯ
-//        showSignIn();
+        showSignIn();
 //        startActivity(new Intent(AuthorizationActivity.this, AuthorizationActivity.class));
-        finish();
+//        finish();
 
     }
 

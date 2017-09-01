@@ -102,6 +102,7 @@ public class CompanyActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+
         super.onStart();
         databaseCompany.addValueEventListener(valueEventListener);
     }
@@ -111,8 +112,15 @@ public class CompanyActivity extends AppCompatActivity {
         public void onDataChange(DataSnapshot dataSnapshot) {
             companies.clear();
             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                final String uid = sPref.getString("user_id", "");
                 Company company = postSnapshot.getValue(Company.class);
-                companies.add(company);
+
+                String userCompanyId = company.getUserId();
+                Log.v("E_VALUE1", "userId:" + userCompanyId);
+                Log.v("E_VALUE1", "uid:" + uid);
+                if(userCompanyId.equals(uid)) {
+                    companies.add(company);
+                }
             }
             CompanyList companyListAdapter = new CompanyList(CompanyActivity.this, companies);
             listViewCompany.setAdapter(companyListAdapter);

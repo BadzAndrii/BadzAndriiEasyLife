@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonAddCompany"
         android:padding="@dimen/activity_horizontal_margin"
-        android:text="Зареєстровані компанії"
+        android:text="Мої Зареєстровані компанії"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
