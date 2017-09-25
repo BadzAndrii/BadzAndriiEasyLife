@@ -15,24 +15,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        android:layout_margin="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Вітаємо на сторінці запису на прийом" />
 
-    <EditText
-        android:id="@+id/editTextTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Введіть час початку"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-
+    <!--<EditText-->
+        <!--android:id="@+id/editTextTime"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="Введіть час початку"-->
+        <!--android:layout_below="@+id/textView3"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true" />-->
     <LinearLayout
         android:orientation="horizontal"
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextTime">
+        android:layout_below="@id/textView3">
 
     </LinearLayout>
 
@@ -44,7 +47,23 @@
         android:text="Добавити"
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        style="?android:textAppearanceSmall"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#3333cc"
+        android:padding="10dp"
+        />
+
+
+    <ListView
+        android:id="@+id/lvMain"
+        android:layout_below="@+id/buttonAddOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
 
 
 </RelativeLayout>

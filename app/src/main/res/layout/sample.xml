@@ -5,23 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <!--<TextView-->
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/vertical_page_margin"
-        android:paddingLeft="@dimen/horizontal_page_margin"
-        android:paddingRight="@dimen/horizontal_page_margin"
-        android:paddingTop="@dimen/vertical_page_margin"
-        android:textSize="16sp"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:text="@string/connect_to_us" />
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingBottom="@dimen/vertical_page_margin"-->
+        <!--android:paddingLeft="@dimen/horizontal_page_margin"-->
+        <!--android:paddingRight="@dimen/horizontal_page_margin"-->
+        <!--android:paddingTop="@dimen/vertical_page_margin"-->
+        <!--android:textSize="16sp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:textAlignment="center"-->
+        <!--android:text="@string/connect_to_us" />-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@android:color/darker_gray" />-->
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

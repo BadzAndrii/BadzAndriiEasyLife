@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Компанія розробник:"
+                android:text="Чувак розробник:"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="3dp"
-                android:text="Vacoms"
+                android:text="Badz Andriy"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="italic" />
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="3dp"
-                android:text="vacoms@gmail.com"
+                android:text="badz.andriy@gmail.com"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="italic" />

@@ -8,8 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonAddCompany"
+        android:textSize="18sp"
         android:padding="@dimen/activity_horizontal_margin"
-        android:text="Зареєстровані компанії"
+        android:text="Доступні компанії"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -17,6 +18,8 @@
         android:id="@+id/listViewCompany"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"></ListView>
+        android:layout_below="@+id/textView">
+
+    </ListView>
 
 </LinearLayout>

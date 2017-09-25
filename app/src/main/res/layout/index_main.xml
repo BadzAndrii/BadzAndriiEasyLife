@@ -2,31 +2,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fon_index"
  >
 
-    <TextView android:id="@+id/txtHeader1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="#FFFFFF"
-        android:padding="8dp"
-        android:text="Easy life"
-        android:background="#FF7F50" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="225dp"
+        android:layout_height="200dp"
+        android:src="@drawable/index_logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/line_index"
+        android:layout_below="@+id/imageView3"
+        android:id="@+id/view" />
 
     <TextView android:id="@+id/txtHeader2"
-        android:layout_below="@+id/txtHeader1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="18dp"
-        android:textColor="#483D8B"
+        android:textColor="#95989A"
         android:padding="5dp"
-        android:text="@string/text_msg_first" />
-
-
-
+        android:text="@string/text_msg_first"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view"
+        android:layout_marginBottom="94dp"
+        android:layout_below="@+id/view"
+        />
 
 </RelativeLayout>

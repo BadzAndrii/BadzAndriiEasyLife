@@ -1,51 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/menu_main_icon"
             android:title="Головна" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Список структур" />
+            android:icon="@drawable/menu_zakaz_icon"
+            android:title="Мої замовлення" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/menu_contact_icon"
             android:title="Контактна інформація" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/menu_about_program_icon"
             android:title="Про програму" />
     </group>
 
     <item android:title="Communicate">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Профіль_2" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Профіль(фрагмент)" />
+            <!--<item-->
+                <!--android:id="@+id/nav_share"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                <!--android:title="Профіль_2-DEL" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Профіль(фрагмент)-DEL" />-->
             <item
                 android:id="@+id/nav_send2"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Профіль(актівіті)" />
-            <item
-                android:id="@+id/nav_send3"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Мої компанії(актівіті)" />
-            <item
-                android:id="@+id/nav_send4"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Список компаній" />
+                android:icon="@drawable/menu_profile_icon"
+                android:title="Мій профіль" />
+            <!--<item-->
+                <!--android:id="@+id/nav_send3"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Мої компанії(актівіті)-DEL" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send4"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Список компаній(актівіті-DEL)" />-->
             <item
                 android:id="@+id/nav_send5"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Список послуг" />
+                android:icon="@drawable/outbox"
+                android:title="(АДМІН)Компанії" />
+            <item
+                android:id="@+id/nav_send6"
+                android:icon="@drawable/outbox"
+                android:title="(ЮЗЕР)Список компаній" />
         </menu>
     </item>
 

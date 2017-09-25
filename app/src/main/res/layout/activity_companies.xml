@@ -10,15 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".CompanyActivity">
 
-    <TextView
-        android:id="@+id/textViewArtist"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
@@ -53,7 +44,14 @@
         android:text="Добавити"
         android:layout_below="@+id/seekBarRating"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        style="?android:textAppearanceSmall"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#3333cc"
+        android:padding="10dp"/>
 
     <TextView
         android:id="@+id/textView"

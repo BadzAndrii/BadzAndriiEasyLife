@@ -28,6 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//МОЖНА ВИДАЛИТИ
+
+
 public class CompanyActivity extends AppCompatActivity {
     public static final String TRACK_ID = "companyId";
 

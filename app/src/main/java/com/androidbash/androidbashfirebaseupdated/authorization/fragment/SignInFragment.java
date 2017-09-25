@@ -52,7 +52,7 @@ public class SignInFragment extends Fragment{
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((AuthorizationActivity) getActivity()).onSignUpClicked();
+                ((AuthorizationActivity) getActivity()).onShowRegistrationDialog();
             }
         });
     }
@@ -65,14 +65,14 @@ public class SignInFragment extends Fragment{
         String login = emailEt.getText().toString();
         String password = passwordEt.getText().toString();
         if (TextUtils.isEmpty(login)) {
-            Toast.makeText(getActivity(), "Please enter login!", Toast.LENGTH_SHORT).show();
-            emailEt.setError("Please enter login!");
+            Toast.makeText(getActivity(), "Будь ласка, введіть логін!", Toast.LENGTH_SHORT).show();
+            emailEt.setError("Будь ласка, введіть логін!");
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getActivity(), "Please enter password!", Toast.LENGTH_SHORT).show();
-            passwordEt.setError("Please enter password!");
+            Toast.makeText(getActivity(), "Будь ласка, введіть пароль!", Toast.LENGTH_SHORT).show();
+            passwordEt.setError("Будь ласка, введіть пароль!");
             return;
         }
 

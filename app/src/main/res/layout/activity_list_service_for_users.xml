@@ -19,7 +19,6 @@
         android:text="Доступні послуги"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:layout_marginTop="18dp"
         android:layout_below="@+id/buttonAddService"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -34,20 +33,20 @@
 
     </ListView>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/listViewServices"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:text="Зареєстровані"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/listViewServices"-->
+        <!--android:padding="@dimen/activity_horizontal_margin"-->
+        <!--android:text="Зареєстровані"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />-->
     <ListView
         android:id="@+id/listViewServices2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2">
-
+        android:layout_below="@+id/listViewServices">
     </ListView>
+
 </RelativeLayout>

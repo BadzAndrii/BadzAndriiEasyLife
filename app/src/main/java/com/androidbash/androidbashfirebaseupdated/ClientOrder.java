@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,14 +23,23 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 //Формування запису (створення запису на послугу в БД)
+
+//МОЖНА ВИДАЛИТИ
+
+
 public class ClientOrder extends AppCompatActivity {
+//    tesst start
+    ArrayList<Product> products = new ArrayList<Product>();
+    BoxAdapter boxAdapter;
+//    test end
 
     Button buttonAddOrder;
-    EditText editTextOrderTime;
+//    EditText editTextOrderTime;
 
     DatabaseReference databaseCompany;
 
@@ -46,11 +56,65 @@ public class ClientOrder extends AppCompatActivity {
 
         initView();
         initListeners();
+
+//        test start
+        // создаем адаптер
+        fillData();
+        boxAdapter = new BoxAdapter(this, products);
+
+        // настраиваем список
+        ListView lvMain = (ListView) findViewById(R.id.lvMain);
+        lvMain.setAdapter(boxAdapter);
+//        test end
+    }
+//    test start
+// генерируем данные для адаптера
+void fillData() {
+    double startTime = 9.00;
+    double endTime = 17.599999999999998;
+    double timeForOneClient = 0.15;
+    double flag;
+    int count=0;
+    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+    for (double hourInDay = startTime; hourInDay < endTime; ) {
+
+        if(count ==4){
+            hourInDay+=0.40;
+            count=0;
+        }
+        else
+        {
+            flag = hourInDay + timeForOneClient;
+            hourInDay = +flag;
+            count++;
+            if(count == 4 )
+            {
+                flag=+hourInDay+0.40;
+            }
+            products.add(new Product("Початок " + decimalFormat.format(hourInDay-0.15)," Кінець "+decimalFormat.format(flag), false));
+//            System.out.println("hourInDay " + decimalFormat.format(hourInDay-0.15) + " flag " + decimalFormat.format(flag) + " count " + count );
+        }
+
+
     }
 
+
+}
+
+    // выводим информацию о корзине
+//    public void showResult(View v) {
+//        String result = "Ви зареєструались на:";
+//        for (Product p : boxAdapter.getBox()) {
+//            if (p.box)
+//                result += "\n" + p.name + " - " +p.price;
+//        }
+//        Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+//    }
+
+//test end
     private void initView() {
         buttonAddOrder = (Button) findViewById(R.id.buttonAddOrder);
-        editTextOrderTime = (EditText) findViewById(R.id.editTextTime);
+//        editTextOrderTime = (EditText) findViewById(R.id.editTextTime);
     }
 
     private void initListeners() {
@@ -63,7 +127,22 @@ public class ClientOrder extends AppCompatActivity {
     }
 
     private void saveOrder() {
-        String orderTime = MyTextUtil.getText(editTextOrderTime);
+
+//        String orderTime = MyTextUtil.getText(editTextOrderTime);
+        //test start
+        String result = "Ви зареєструвались на:";
+        String resultForDB = "";
+        for (Product p : boxAdapter.getBox()) {
+            if (p.box) {
+                result += "\n" + p.name + " - " + p.price;
+                resultForDB += p.name + " - " + p.price;
+            }
+        }
+        Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+
+        String orderTime = resultForDB;
+        //test end
+
 //        String orderTime = editTextOrderTime.getText().toString().trim();
         Intent intent = getIntent();
         final String uid = sPref.getString("user_id", "");
@@ -78,7 +157,7 @@ public class ClientOrder extends AppCompatActivity {
             databaseCompany.child(id).setValue(order);
 
             Toast.makeText(this, "Order saved", Toast.LENGTH_LONG).show();
-            editTextOrderTime.setText("");
+//            editTextOrderTime.setText("");
         } else {
             Toast.makeText(this, "Please enter order start time", Toast.LENGTH_LONG).show();
         }

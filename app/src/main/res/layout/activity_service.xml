@@ -54,14 +54,21 @@
         android:layout_below="@+id/editTextServiceTime"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        style="?android:textAppearanceSmall"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#3333cc"
+        android:padding="10dp"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/activity_horizontal_margin"
-        android:text="Зареєстровані послуги"
+        android:text="Усі Зареєстровані послуги"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_marginTop="18dp"

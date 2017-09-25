@@ -21,6 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+//МОЖНА ВИДАЛИТИ
+
+
 // Список послуг для показу користувачам (після переходу із компанії)
 public class ListServiceForUsers extends AppCompatActivity {
 

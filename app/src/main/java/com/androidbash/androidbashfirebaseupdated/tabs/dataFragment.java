@@ -21,7 +21,7 @@ public class dataFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.sample, container, false);
-        getActivity().setTitle("Список структур");
+        getActivity().setTitle("Мої замолення");
 
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         viewPager.setAdapter(new sliderAdapter(getChildFragmentManager()));
@@ -37,7 +37,7 @@ public class dataFragment extends Fragment {
     }
     private class sliderAdapter extends FragmentPagerAdapter {
 
-        final String tabs[]={"Крок 1", "Крок 2" , "Крок 3"};
+        final String tabs[]={"Компанії", "Сервіси" , "Дата і час"};
         public sliderAdapter(FragmentManager fm) {
             super(fm);
         }

@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.androidbash.androidbashfirebaseupdated.admin.activity.AdminActivity;
+import com.androidbash.androidbashfirebaseupdated.client.activity.ClientActivity;
 import com.androidbash.androidbashfirebaseupdated.fragments.ContactUsFragment;
 import com.androidbash.androidbashfirebaseupdated.fragments.FragmentIndex;
 import com.androidbash.androidbashfirebaseupdated.fragments.ProfileFragment;
@@ -111,25 +113,35 @@ public class NavigationMenu extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new ContactUsFragment()).commit();
         } else if (id == R.id.nav_manage) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
-        } else if (id == R.id.nav_share) {
-//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        }
+//        else if (id == R.id.nav_share) {
+//            Intent intent = new Intent(getApplicationContext(), com.androidbash.androidbashfirebaseupdated.profile.activity.ProfileActivity.class);
 //            startActivity(intent);
-        } else if (id == R.id.nav_send) {
-//            Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
-//            startActivity(intent2);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
-        } else if (id == R.id.nav_send2) {
+//        }
+//        else if (id == R.id.nav_send) {
+////            Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
+////            startActivity(intent2);
+//            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
+//        }
+        else if (id == R.id.nav_send2) {
             Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent2);
-        } else if (id == R.id.nav_send3) {
-            Intent intent3 = new Intent(getApplicationContext(), CompanyActivity.class);
-            startActivity(intent3);
-        } else if (id == R.id.nav_send4) {
-            Intent intent4 = new Intent(getApplicationContext(), ListCompanyForUsers.class);
-            startActivity(intent4);
-        } else if (id == R.id.nav_send5) {
-//            Intent intent5 = new Intent(getApplicationContext(), UserInfoActivity.class);
-//            startActivity(intent5);
+        }
+//        else if (id == R.id.nav_send3) {
+//            Intent intent3 = new Intent(getApplicationContext(), CompanyActivity.class);
+//            startActivity(intent3);
+//        }
+//        else if (id == R.id.nav_send4) {
+//            Intent intent4 = new Intent(getApplicationContext(), ListCompanyForUsers.class);
+//            startActivity(intent4);
+//        }
+        else if (id == R.id.nav_send5) {
+            Intent intent5 = new Intent(getApplicationContext(), AdminActivity.class);
+            startActivity(intent5);
+        }
+        else if (id == R.id.nav_send6) {
+            Intent intent6 = new Intent(getApplicationContext(), ClientActivity.class);
+            startActivity(intent6);
         }
         ftrans.commit();
 

@@ -26,6 +26,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//МОЖНА ВИДАЛИТИ
+
+
+
 public class ServiceActivity extends AppCompatActivity {
 
     private Firebase myFirebaseRef;
