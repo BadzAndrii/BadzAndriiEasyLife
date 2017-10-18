@@ -1,41 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.androidbash.androidbashfirebaseupdated" >
-    <uses-permission android:name="android.permission.INTERNET"/>
+    package="com.androidbash.androidbashfirebaseupdated">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:label="@string/app_name" />
-
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
-            android:label="AndroidBashFirebase Log In"
+            android:name=".authorization.activity.AuthorizationActivity"
+            android:label="Easy Life"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!--<activity-->
+            <!--android:name=".SignUpActivityAdmin"-->
+            <!--android:label="Реєстрація адміністратора компанії"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <!--<activity-->
+            <!--android:name=".SignUpActivityClient"-->
+            <!--android:label="Реєстрація клієнта"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
-            android:name=".SignUpActivity"
-            android:label="Sign Up Activity"
+            android:name=".ProfileActivity"
+            android:label="Профіль"
+/>
+        <activity
+            android:name=".CompanyActivity"
+            android:label="Профіль"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NavigationMenu"
+            android:label="@string/title_activity_navigation_menu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ServiceActivity" />
+        <activity android:name=".ListCompanyForUsers" />
+        <activity android:name=".ListServiceForUsers" />
+        <activity android:name=".admin.activity.AdminActivity" />
+        <activity android:name=".profile.activity.ProfileActivity" />
+        <activity android:name=".client.activity.ClientActivity" />
+        <activity android:name=".clientOrder.activity.ClientActivityOrder"/>
+        <activity android:name=".ClientOrder">
 
-        <activity android:name=".MainActivity"
-            android:label="AndroidBash Home"
-            android:theme="@style/AppTheme.NoActionBar"/>
 
-
+        </activity>
     </application>
 
 </manifest>

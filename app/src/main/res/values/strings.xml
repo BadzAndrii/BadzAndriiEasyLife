@@ -1,6 +1,50 @@
 <resources>
-    <string name="app_name">AndroidBashFirebaseUpdated</string>
-    <string name="action_logout"> Log Out</string>
-    <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
-    <string name="loading">Loading</string>
+    <string name="app_name">Life is easy</string>
+    <string name="action_logout"> Вихід</string>
+    <string name="loading">Завантаження</string>
+
+    <string name="choose_text">Як Ви бажаєте використовувати наш додаток?</string>
+    <string name="client_text">Клієнт</string>
+    <string name="admin_text">Адміністратор закладу</string>
+
+    <string name="dialog_1">Перейти до реєстрації</string>
+    <string name="client_msg">Щоб продовжити роботу з додатком додайте про себе інформацію!</string>
+    <string name="admin_msg">Щоб продовжити роботу з додатком як адміністратор додайте про себе інформацію!</string>
+    <string name="title_activity_navigation_menu">NavigationMenu</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Налаштування</string>
+    <string name="text_msg_first">Ми створені для того щоб покращити Ваше життя. Наш сервіс допомагає здійснити реєстрацію у відповідній сфері послуг та не стояти у чергах! Головне прийти вчасно по запису.</string>
+
+    <string name="email_developer">Пошта розробника:</string>
+    <string name="personal_website_">Персональна сторінка:</string>
+    <string name="site_hitesh">https://www.facebook.com/badz.andriy</string>
+    <string name="contact_number">Контактний телефон</string>
+    <string name="mob_num">096-570-13-28</string>
+    <string name="lab_locations">Країна</string>
+    <string name="pune">Україна</string>
+    <string name="address_value">Львів</string>
+
+
+
+
+    <!--TABS START-->
+    <string name="connect_to_us">ТУТ відображаються ваші замовлення</string>
+
+    <string name="step_1">
+<b>1</b>
+    </string>
+
+    <string name="step_2">
+
+\n<b>2</b>
+
+    </string>
+    <string name="step_3">
+
+\n<b>3</b>
+        </string>
+    //END
 </resources>
