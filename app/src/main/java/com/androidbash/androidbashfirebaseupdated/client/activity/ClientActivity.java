@@ -50,6 +50,8 @@ public class ClientActivity extends AppCompatActivity {
     String fileName;
     String serviceIdFromFragment;
 
+    String companyNameForOrder;
+    String serviceNameForOrder;
     //    for order
     DatabaseReference databaseCompanyOrder;
     SharedPreferences sPref;
@@ -84,7 +86,7 @@ public class ClientActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.v("Activity:", "Start ADMINACTIVITY");
+        Log.v("Activity:", "Start CLIENT ACTTIVITY");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listcompanyactivity);
         databaseCompany = FirebaseDatabase.getInstance().getReference("company");
@@ -210,6 +212,12 @@ public class ClientActivity extends AppCompatActivity {
         //PACK DATA IN A BUNDLE
         Bundle bundle = new Bundle();
         bundle.putString("companyId", company.getCompanyId());
+
+        //    TEST for ORDERS
+        bundle.putString("companyName", company.getCompanyName());
+//END TEST
+
+
         //PASS OVER THE BUNDLE TO OUR FRAGMENT
         ServiceListFragment myFragment = new ServiceListFragment();
         myFragment.setArguments(bundle);
@@ -257,6 +265,11 @@ public void showOrderList(int i) {
     //PACK DATA IN A BUNDLE
     Bundle bundle = new Bundle();
     bundle.putString("serviceId", service.getServiceId());
+//    TEST for ORDERS
+    bundle.putString("serviceName", service.getServiceName());
+//END TEST
+
+
     //PASS OVER THE BUNDLE TO OUR FRAGMENT
     RegisterOrderFragment myFragmentService = new RegisterOrderFragment();
     myFragmentService.setArguments(bundle);
@@ -328,6 +341,13 @@ public void fillData() {
         String company_id = getFileName();
         String service_id = getServiceId();
 
+//        TEST FOR ORDER
+        String company_name = getCompanyNameForOrder();
+        String service_name = getServiceNameForOrder();
+
+        Log.v("E_VALUE25", "company_name:" + company_name);
+        Log.v("E_VALUE25", "service_name:" + service_name);
+//        END
 
         Log.v("E_VALUE25", "company_id:" + company_id);
         Log.v("E_VALUE25", "service_id:" + service_id);
@@ -375,6 +395,24 @@ public void fillData() {
     public String setServiceId(String serviceIdFromFragment) {
         this.serviceIdFromFragment = serviceIdFromFragment;
         return serviceIdFromFragment;
+    }
+
+
+//    TEST FOR ORDERS
+public String getCompanyNameForOrder() {
+    return companyNameForOrder;
+}
+    public String setCompanyNameForOrder(String companyNameForOrder) {
+        this.companyNameForOrder = companyNameForOrder;
+        return companyNameForOrder;
+    }
+
+    public String getServiceNameForOrder() {
+        return serviceNameForOrder;
+    }
+    public String setServiceNameForOrder(String serviceNameForOrder) {
+        this.serviceNameForOrder = serviceNameForOrder;
+        return serviceNameForOrder;
     }
 //
 }

@@ -46,13 +46,15 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textColor="@color/color_white"
-            android:text="X"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/ic_create"
             />
 
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:background="@color/material_blue_500" />
 
     <TextView
         android:id="@+id/text_view_new_email"
@@ -93,11 +95,14 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textColor="@color/color_white"
-            android:text="X"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/ic_create"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:background="@color/material_blue_500" />
     <TextView
         android:id="@+id/text_view_phone_number"
         android:layout_width="wrap_content"
@@ -135,18 +140,12 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textColor="@color/color_white"
-            android:text="X"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/ic_create"
             />
     </LinearLayout>
-    <Button
-        android:id="@+id/save_edit_button"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorPrimaryDark"
-        android:padding="12dp"/>
-
-
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:background="@color/material_blue_500" />
 </LinearLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_blue_500" >
+ >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -27,7 +27,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:text="Версія програми"
-                android:textColor="@color/white"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -38,11 +38,15 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="3dp"
                 android:text="1.0"
-                android:textColor="@color/white"
+                android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="italic" />
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/material_blue_500" />
         <LinearLayout
             android:id="@+id/email_dev"
             android:layout_width="match_parent"
@@ -57,7 +61,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="Оновлення додатка"
-                android:textColor="@color/white"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -67,7 +71,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="3dp"
                 android:text="перевірити оновлення"
-                android:textColor="@color/white"
+                android:textColor="#000000"
                 android:textSize="15sp" />
         </LinearLayout>
 
@@ -75,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="10dp"
-            android:background="@color/white" />
+            android:background="@color/material_blue_500" />
 
     </LinearLayout>
 

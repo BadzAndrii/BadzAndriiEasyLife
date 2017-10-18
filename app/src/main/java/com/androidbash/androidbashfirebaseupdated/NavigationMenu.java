@@ -17,40 +17,84 @@ import android.view.MenuItem;
 
 import com.androidbash.androidbashfirebaseupdated.admin.activity.AdminActivity;
 import com.androidbash.androidbashfirebaseupdated.client.activity.ClientActivity;
+import com.androidbash.androidbashfirebaseupdated.clientOrder.activity.ClientActivityOrder;
 import com.androidbash.androidbashfirebaseupdated.fragments.ContactUsFragment;
 import com.androidbash.androidbashfirebaseupdated.fragments.FragmentIndex;
 import com.androidbash.androidbashfirebaseupdated.fragments.ProfileFragment;
 import com.androidbash.androidbashfirebaseupdated.fragments.SettingsFragment;
 import com.androidbash.androidbashfirebaseupdated.tabs.dataFragment;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Map;
 
 public class NavigationMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
 
     SharedPreferences isUserAdmin;
+    SharedPreferences sPref;
+    private Firebase myFirebaseRef;
+    Boolean isAdmin;
+
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.v("Activity:","Start NavigationMenu");
+
         setContentView(R.layout.activity_navigation_menu);
 
 //        getSupportFragmentManager().beginTransaction().replace(R.id.container, new FragmentIndex()).commit();
 
+        myFirebaseRef = new Firebase("https://androidbashfirebaseupdat-b96a7.firebaseio.com/users/");
+        mAuth = FirebaseAuth.getInstance();
 
+        initFirebase();
         initView();
 
-        mAuth = FirebaseAuth.getInstance();
 
         isUserAdmin = getSharedPreferences("isAdmin", Context.MODE_PRIVATE);
         isUserAdmin.getBoolean("isAdmin", false);
 
+    }
+
+    private void initFirebase() {
+
+        sPref = getSharedPreferences("user_id", MODE_PRIVATE);
+        final String uid = sPref.getString("user_id", "");
+        myFirebaseRef.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Map<Boolean, Boolean> map = dataSnapshot.getValue(Map.class);
+                isAdmin = map.get("isAdmin");
+                Log.v("Activity", "isAdmin:" + isAdmin);
+
+                //перевірка на АДМІНА чи ЮЗЕРА РОЗКОМЕНТУВАТИИИИИИИИИИИ
+//                Menu menu = navigationView.getMenu();
+//                if(isAdmin) {
+////            TRUE
+//                    menu.findItem(R.id.nav_send6).setVisible(false);
+//                }
+//                else {
+//                    menu.findItem(R.id.nav_send5).setVisible(false);
+//                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
     }
 
     private void initView() {
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -60,8 +104,9 @@ public class NavigationMenu extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
     }
 
@@ -107,9 +152,14 @@ public class NavigationMenu extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new FragmentIndex()).commit();
-        } else if (id == R.id.nav_gallery) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new dataFragment()).commit();
-        } else if (id == R.id.nav_slideshow) {
+        }
+        else if (id == R.id.nav_gallery)
+        {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.container, new dataFragment()).commit();
+            Intent intent10 = new Intent(getApplicationContext(), ClientActivityOrder.class);
+            startActivity(intent10);
+        }
+        else if (id == R.id.nav_slideshow) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new ContactUsFragment()).commit();
         } else if (id == R.id.nav_manage) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
