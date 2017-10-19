@@ -152,7 +152,7 @@ void fillData() {
         if (!TextUtils.isEmpty(orderTime)) {
             String id = databaseCompany.push().getKey();
 
-            Order order = new Order(id, company_id, intent.getStringExtra(ListServiceForUsers.SERVICE_ID), orderTime, uid);
+            Order order = new Order(id, company_id,company_id, intent.getStringExtra(ListServiceForUsers.SERVICE_ID),company_id, orderTime, uid);
 
             databaseCompany.child(id).setValue(order);
 

@@ -5,7 +5,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class Order {
     private String orderId;
     private String companyId;
+    private String companyName;
     private String serviceId;
+    private String serviceName;
     private String startTime;
     private String userId;
 
@@ -13,10 +15,12 @@ public class Order {
 
     }
 
-    public Order(String orderId , String companyId, String serviceId, String startTime, String userId) {
+    public Order(String orderId , String companyId,String companyName, String serviceId, String serviceName, String startTime, String userId) {
         this.orderId = orderId;
         this.companyId = companyId;
+        this.companyName = companyName;
         this.serviceId = serviceId;
+        this.serviceName = serviceName;
         this.startTime = startTime;
         this.userId = userId;
     }
@@ -28,8 +32,14 @@ public class Order {
     public String getCompanyId() {
         return companyId;
     }
+    public String getCompanyName() {
+        return companyName;
+    }
     public String getServiceId() {
         return serviceId;
+    }
+    public String getServiceName() {
+        return serviceName;
     }
     public String getUserId() {
         return userId;

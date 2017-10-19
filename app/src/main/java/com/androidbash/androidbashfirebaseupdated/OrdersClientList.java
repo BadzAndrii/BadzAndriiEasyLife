@@ -30,8 +30,8 @@ public class OrdersClientList extends ArrayAdapter<Order> {
         TextView textViewTime = (TextView) listViewItem.findViewById(R.id.textViewTime);
 
         Order order = orders.get(position);
-        textViewName.setText(order.getCompanyId());
-        textViewGenre.setText(order.getServiceId());
+        textViewName.setText(order.getCompanyName());
+        textViewGenre.setText(order.getServiceName());
         textViewTime.setText(order.getStartTime());
 
         return listViewItem;

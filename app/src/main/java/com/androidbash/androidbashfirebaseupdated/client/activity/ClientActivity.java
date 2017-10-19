@@ -355,7 +355,7 @@ public void fillData() {
         if (!TextUtils.isEmpty(orderTime)) {
             String id = databaseCompanyOrder.push().getKey();
 
-            Order order = new Order(id, company_id, service_id, orderTime, uid);
+            Order order = new Order(id, company_id,company_name, service_id,service_name, orderTime, uid);
 
             databaseCompanyOrder.child(id).setValue(order);
 

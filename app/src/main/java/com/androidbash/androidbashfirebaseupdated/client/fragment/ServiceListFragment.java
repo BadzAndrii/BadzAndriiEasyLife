@@ -28,6 +28,7 @@ public class ServiceListFragment extends Fragment {
     public ListView ListViewServices2;
 
     private String fileName;
+    private String companyNameFor;
 
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                        Bundle savedInstanceState) {
@@ -41,6 +42,11 @@ public class ServiceListFragment extends Fragment {
         fileName = ((ClientActivity) getActivity()).setFileName(companyIdFromClientActivity);
         Log.v("Activity:", "CompanyId"+companyIdFromClientActivity);
 
+//        TEST FOR ORDER
+        String companyNameFromClientActivity = this.getArguments().getString("companyName").toString();
+        companyNameFor = ((ClientActivity) getActivity()).setCompanyNameForOrder(companyNameFromClientActivity);
+        Log.v("Activity:", "CompanyName:"+companyNameFromClientActivity);
+//        END TEST
         return root;
     }
 

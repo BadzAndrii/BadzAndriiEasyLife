@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class RegisterOrderFragment extends Fragment {
     private View root;
     private String serviceIdFromFragment;
-    private String companyNameFromFragment;
+    private String serviceNameFromFragment;
     Button buttonAddOrder;
     ArrayList<Product> products = new ArrayList<Product>();
     BoxAdapter boxAdapter;
@@ -50,9 +50,9 @@ public class RegisterOrderFragment extends Fragment {
         Log.v("Activity:", "serviceIdFromClientActivity"+serviceIdFromClientActivity);
 
         //TEST for ORDER CLIENT
-        String companyNameFrom = this.getArguments().getString("companyName").toString();
-        companyNameFromFragment = ((ClientActivity) getActivity()).setCompanyNameForOrder(companyNameFrom);
-        Log.v("Activity:", "companyNameFrom"+companyNameFrom);
+        String serviceNameFrom = this.getArguments().getString("serviceName").toString();
+        serviceNameFromFragment = ((ClientActivity) getActivity()).setServiceNameForOrder(serviceNameFrom);
+        Log.v("Activity:", "serviceNameFrom: "+serviceNameFrom);
 
 //        boxAdapter = new BoxAdapter(getActivity(), products);
 //        // настраиваем список
