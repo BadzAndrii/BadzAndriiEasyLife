@@ -1,6 +1,5 @@
 package com.androidbash.androidbashfirebaseupdated.client.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,13 +9,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.androidbash.androidbashfirebaseupdated.ClientOrder;
-import com.androidbash.androidbashfirebaseupdated.ListCompanyForUsers;
 import com.androidbash.androidbashfirebaseupdated.R;
 import com.androidbash.androidbashfirebaseupdated.Service;
-import com.androidbash.androidbashfirebaseupdated.admin.activity.AdminActivity;
 import com.androidbash.androidbashfirebaseupdated.client.activity.ClientActivity;
-import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
 

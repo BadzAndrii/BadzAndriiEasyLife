@@ -1,9 +1,7 @@
 package com.androidbash.androidbashfirebaseupdated.admin.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,19 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.androidbash.androidbashfirebaseupdated.CompanyActivity;
 import com.androidbash.androidbashfirebaseupdated.R;
-import com.androidbash.androidbashfirebaseupdated.Service;
 import com.androidbash.androidbashfirebaseupdated.admin.activity.AdminActivity;
-import com.androidbash.androidbashfirebaseupdated.authorization.activity.AuthorizationActivity;
 import com.androidbash.androidbashfirebaseupdated.utils.MyTextUtil;
-import com.firebase.client.Firebase;
-import com.google.firebase.database.DatabaseReference;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ServiceTableFragment extends Fragment {
     private View root;

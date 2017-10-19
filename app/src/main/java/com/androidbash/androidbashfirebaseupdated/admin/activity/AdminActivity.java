@@ -1,7 +1,5 @@
 package com.androidbash.androidbashfirebaseupdated.admin.activity;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,23 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.androidbash.androidbashfirebaseupdated.Company;
-import com.androidbash.androidbashfirebaseupdated.CompanyActivity;
 import com.androidbash.androidbashfirebaseupdated.CompanyList;
 import com.androidbash.androidbashfirebaseupdated.R;
 import com.androidbash.androidbashfirebaseupdated.Service;
-import com.androidbash.androidbashfirebaseupdated.ServiceActivity;
 import com.androidbash.androidbashfirebaseupdated.ServiceList;
 import com.androidbash.androidbashfirebaseupdated.admin.fragment.RegisterCompanyFragment;
 import com.androidbash.androidbashfirebaseupdated.admin.fragment.ServiceTableFragment;
-import com.androidbash.androidbashfirebaseupdated.authorization.dialog.Dialog1;
-import com.androidbash.androidbashfirebaseupdated.authorization.fragment.SignInFragment;
-import com.androidbash.androidbashfirebaseupdated.utils.MyTextUtil;
 import com.firebase.client.Firebase;
 import com.firebase.client.core.Context;
 import com.google.firebase.database.DataSnapshot;

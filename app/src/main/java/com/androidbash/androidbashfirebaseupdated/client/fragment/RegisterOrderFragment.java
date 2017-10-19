@@ -1,32 +1,18 @@
 package com.androidbash.androidbashfirebaseupdated.client.fragment;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.androidbash.androidbashfirebaseupdated.BoxAdapter;
-import com.androidbash.androidbashfirebaseupdated.ListServiceForUsers;
-import com.androidbash.androidbashfirebaseupdated.Order;
 import com.androidbash.androidbashfirebaseupdated.Product;
 import com.androidbash.androidbashfirebaseupdated.R;
-import com.androidbash.androidbashfirebaseupdated.Service;
-import com.androidbash.androidbashfirebaseupdated.admin.activity.AdminActivity;
 import com.androidbash.androidbashfirebaseupdated.client.activity.ClientActivity;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class RegisterOrderFragment extends Fragment {

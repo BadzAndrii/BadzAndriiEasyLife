@@ -1,6 +1,5 @@
 package com.androidbash.androidbashfirebaseupdated.admin.fragment;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 
 import com.androidbash.androidbashfirebaseupdated.Company;
 import com.androidbash.androidbashfirebaseupdated.R;
-import com.androidbash.androidbashfirebaseupdated.ServiceActivity;
 import com.androidbash.androidbashfirebaseupdated.admin.activity.AdminActivity;
 import com.androidbash.androidbashfirebaseupdated.utils.MyTextUtil;
 import com.google.firebase.database.DatabaseReference;

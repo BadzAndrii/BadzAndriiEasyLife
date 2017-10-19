@@ -31,26 +31,23 @@
         <activity
             android:name=".ProfileActivity"
             android:label="Профіль"
-/>
-        <activity
-            android:name=".CompanyActivity"
-            android:label="Профіль"
-            android:theme="@style/AppTheme.NoActionBar" />
+            />
         <activity
             android:name=".NavigationMenu"
             android:label="@string/title_activity_navigation_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ServiceActivity" />
-        <activity android:name=".ListCompanyForUsers" />
-        <activity android:name=".ListServiceForUsers" />
-        <activity android:name=".admin.activity.AdminActivity" />
-        <activity android:name=".profile.activity.ProfileActivity" />
-        <activity android:name=".client.activity.ClientActivity" />
-        <activity android:name=".clientOrder.activity.ClientActivityOrder"/>
-        <activity android:name=".ClientOrder">
-
-
-        </activity>
+        <activity android:name=".admin.activity.AdminActivity"
+            android:label="Адмін панель"
+            />
+        <activity android:name=".profile.activity.ProfileActivity"
+            android:label="Профіль"
+            />
+        <activity android:name=".client.activity.ClientActivity"
+            android:label="Панель користувача"
+            />
+        <activity android:name=".clientOrder.activity.ClientActivityOrder"
+            android:label="Мої замовлення"
+            />
     </application>
 
 </manifest>

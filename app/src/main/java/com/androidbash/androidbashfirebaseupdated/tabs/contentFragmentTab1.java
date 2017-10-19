@@ -1,6 +1,5 @@
 package com.androidbash.androidbashfirebaseupdated.tabs;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.androidbash.androidbashfirebaseupdated.Company;
-import com.androidbash.androidbashfirebaseupdated.CompanyActivity;
 import com.androidbash.androidbashfirebaseupdated.CompanyList;
 import com.androidbash.androidbashfirebaseupdated.R;
 import com.google.firebase.database.DataSnapshot;

@@ -49,7 +49,7 @@ public class NavigationMenu extends AppCompatActivity
 
         setContentView(R.layout.activity_navigation_menu);
 
-//        getSupportFragmentManager().beginTransaction().replace(R.id.container, new FragmentIndex()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new FragmentIndex()).commit();
 
         myFirebaseRef = new Firebase("https://androidbashfirebaseupdat-b96a7.firebaseio.com/users/");
         mAuth = FirebaseAuth.getInstance();
